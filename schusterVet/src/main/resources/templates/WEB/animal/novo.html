@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragmentos :: head}"></head>
+
+<body class="bg-light">
+<div th:replace="~{/fragmentos :: menu}"></div>
+
+<form id="formulario" th:object="${animal}"  action="/animal/salvar" method="POST" class=" row g-3">
+		<span class="navbar-brand mb-0 h1 text-primary " id="titulo">Cadastrar Produto</span>
+
+		<div class="col-md-6">
+			<label for="inputNome" class="form-label">Nome</label> 
+			<input type="text" required name="nome" class="form-control" th:field="*{nome}" id="inputNome">
+		</div>
+		<div class="col-md-6">
+			<label for="inputTipo" class="form-label">Tipo</label> 
+			<input type="text" required name="tipo" class="form-control" th:field="*{tipo}" id="inputTipo">
+		</div>
+		<div class="col-md-6">
+			<label for="inputRaca" class="form-label">Raça</label> 
+			<input type="text" required name="raca" class="form-control" th:field="*{raca}" id="inputRaca">
+		</div>
+		<div class="col-md-6">
+			<label for="inputCor" class="form-label">Cor</label> 
+			<input type="text" required name="cor" class="form-control" th:field="*{cor}" id="inputCor">
+		</div>
+		<div class="col-md-6">
+			<label for="inputPeso" class="form-label">Peso</label> 
+			<input type="number" required name="peso" class="form-control" th:field="*{peso}" id="inputPeso">
+		</div>
+		<div class="col-md-6">
+			<label for="inputAltura" class="form-label">Altura</label> 
+			<input type="text" required name="altura" class="form-control" th:field="*{altura}" id="inputAltura">
+		</div>						
+			
+		<div class="col-md-4 ">
+
+			<div class=" d-flex gap-2">
+				
+				<button id="botaoCadastrar" type="submit" class="botao btn-lg btn-success">Salvar</button>
+				<button type="reset" disabled class="botao btn btn-lg btn-danger">Excluir</button>
+				<a type="button" href="/animal/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
+			</div>
+
+		</div>
+	</form>
+
+
+
+</body>
+
+<style type="text/css">
+
+#botaoCadastrar {
+	position: relative;
+	margin-left: 15%;
+}
+
+.botao {
+	width: 10rem;
+}
+
+#formulario {
+	width: 60%;
+	margin: 5% 0 0 20%;
+	background-color: white;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	height: 28rem;
+	padding-bottom: 2rem;
+}
+
+</style>
+
+</html>

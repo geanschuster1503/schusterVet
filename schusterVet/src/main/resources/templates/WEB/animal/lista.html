@@ -1,0 +1,81 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragmentos :: head}"></head>
+
+<body class="bg-light">
+
+<div th:replace="~{/fragmentos :: menu}"></div>
+
+<div class="table-responsive">
+	<h2 class="tituloProduto text-dark">Animais</h2>
+	<table class="table table-bordered   bg-light w-50 "> 
+		<thead>
+			<tr>
+				<th class="linhaTabelaId  text-center" >Id</th>
+				<th class="linhaTabelaNome" >Nome</th>
+				<th class="linhaTabelaDescricao" >Descrição</th>
+				<th class=" linhaTabelaIcon"><a class="btn btn-dark btn-sm " href="/animal/novo" role="button" >Novo</a></th>	
+			</tr>
+		</thead>
+			<tbody>
+				<tr th:each="animal : ${animal}">
+				<td  th:text="${animal.getId()}"> </td>
+					<td  th:text="${animal.getNome()}"> </td>
+					<td  th:text="${animal.getRaca()}"> </td>
+					<td class="linhaTabelaIcon d-flex  ">
+						<a class="btn btn-primary btn-sm me-1"  role="button" >Editar</a>
+						<a class="btn btn-outline-primary "  role="button" > 👁‍🗨</a>
+					</td>
+					
+				</tr>
+			</tbody>
+	</table>
+</div>
+</body>
+
+
+<style type="text/css">
+
+.btn-dark{
+
+margin-left: 30%
+
+}
+
+.linhaTabelaId{
+width:5rem;
+}
+
+.linhaTabelaIcon{
+
+text-align: center;
+width: 8rem;
+
+}
+
+.table{
+
+margin:0% 0% 0% 25%;
+}
+
+#titulo {
+	font-size: 30px;
+	font-family: sans-serif;
+	text-decoration: none;
+	font-weight: 800;
+}
+
+.tituloProduto{
+font-size:30px;
+font-family:sans-serif;
+text-decoration:none;
+font-weight: 800;
+margin:5% 0 0 25%;
+
+
+}
+
+</style>
+
+
+</html>
