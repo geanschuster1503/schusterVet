@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.schusterVet.model.Animal;
+import br.com.schusterVet.model.Responsavel;
 
 @Configuration
 public class Configuracoes {
@@ -15,5 +16,9 @@ public class Configuracoes {
 		return new Animal();
 	}
 	
-	
+	@Bean
+	public Responsavel responsavel() {
+		
+		return new Responsavel();
+	}
 }

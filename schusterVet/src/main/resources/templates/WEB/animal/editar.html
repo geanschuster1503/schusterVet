@@ -5,69 +5,48 @@
 <body class="bg-light">
 <div th:replace="~{/fragmentos :: menu}"></div>
 
-<form id="formulario" th:object="${animal}"  action="/animal/salvar" method="POST" class=" row g-3">
-		<h3 class="text-primary" >Cadastrar Animal</h3>
+
+	<form id="formulario" th:object="${animal}"  th:action="@{/animal/{id}/atualizar (id = ${animal.id})}" method="POST" class=" row g-3">
+	<h3 class="text-primary" >Cadastrar Animal</h3>
 
 		<div class="col-md-6">
-			<label for="inputNome" class="form-label">Nome:</label> 
+			<label for="inputNome" class="form-label">Nome</label> 
 			<input type="text" required name="nome" class="form-control" th:field="*{nome}" id="inputNome">
 		</div>
 		<div class="col-md-6">
-			<label for="inputTipo" class="form-label">Tipo:</label> 
+			<label for="inputTipo" class="form-label">Tipo</label> 
 			<input type="text" required name="tipo" class="form-control" th:field="*{tipo}" id="inputTipo">
 		</div>
 		<div class="col-md-6">
-			<label for="inputRaca" class="form-label">Raça:</label> 
+			<label for="inputRaca" class="form-label">Raça</label> 
 			<input type="text" required name="raca" class="form-control" th:field="*{raca}" id="inputRaca">
 		</div>
 		<div class="col-md-6">
-			<label for="inputCor" class="form-label">Cor:</label> 
+			<label for="inputCor" class="form-label">Cor</label> 
 			<input type="text" required name="cor" class="form-control" th:field="*{cor}" id="inputCor">
 		</div>
 		<div class="col-md-6">
-			<label for="inputPeso" class="form-label">Peso:</label> 
+			<label for="inputPeso" class="form-label">Peso</label> 
 			<input  required name="peso" class="form-control" th:field="*{peso}" id="inputPeso">
 		</div>
 		<div class="col-md-6">
-			<label for="inputAltura" class="form-label">Altura:</label> 
+			<label for="inputAltura" class="form-label">Altura</label> 
 			<input type="text" required name="altura" class="form-control" th:field="*{altura}" id="inputAltura">
+		</div>						
+		
+		<div class="col-md-6">
+			<label for="inputDataNascimento" class="form-label">Data De Nascimento:</label> 
+			<input type="date" required name="dataNascimento" class="form-control" th:value="${animal.dataNascimento}" id="inputDataNascimento">
 		</div>	
-		
-		<div class="col-md-6">
-			<label for="inputAltura" class="form-label">Data De Nascimento:</label> 
-			<input type="date" required name="dataNascimento" class="form-control" th:field="*{dataNascimento}" id="inputDataNascimento">
-		</div>
-		<div class="col-md-6">
-			<label for="inputAltura" class="form-label">Responsavel</label> 
-			<input type="text" required name="responsavelAnimal" class="form-control" th:field="*{responsavelAnimal}" id="inputDataNascimento">
-		</div>
-		
-		<div class="col-md-6">
-		<label for="inputAltura" class="form-label">Responsável:</label> 
-		<select th:field="*{responsavelAnimal}" class="form-control">
-
-				<option th:each="list : ${list}"
-						th:value="${responsavelAnimal}"
-						th:text="${list.nome}">
-				</option>
-				
 			
-			</select>
-		
-		
-		</div>
-
-			
-		<div class="col-md-4 caixa-botoes">
+		<div class="col-md-4 caixa-botoes ">
 			<div class=" d-flex gap-2">
-				<button i type="submit" class="botao btn-lg btn-success">Salvar</button>
+				<button  type="submit" class="botao btn-lg btn-success">Atualizar</button>
 				<button type="reset" disabled class="botao btn btn-lg btn-danger">Excluir</button>
 				<a type="button" href="/animal/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
 			</div>
 		</div>
 	</form>
-
-
 
 </body>
 
@@ -81,10 +60,14 @@
 	background-color: white;
 	border-radius: 0.5rem;
 	padding: 1rem;
-	height: 33rem;
+	height: 28rem;
 	padding-bottom: 2rem;
 }
 
+.caixa-botoes{
+margin-top: 3.5%;
+margin-left:3%
+}
 
 
 </style>

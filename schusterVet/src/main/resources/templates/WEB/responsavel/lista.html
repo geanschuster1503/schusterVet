@@ -7,25 +7,26 @@
 <div th:replace="~{/fragmentos :: menu}"></div>
 
 <div class="table-responsive">
-	<h3 class="tituloProduto text-primary">Animais</h3>
+	<h3 class="tituloProduto text-primary">Responsáveis</h3>
 	<table class="table table-bordered   bg-light w-50 "> 
 		<thead>
 			<tr>
 				<th class="linhaTabelaId text-primary text-center" >Id</th>
 				<th class="linhaTabelaNome text-primary" >Nome</th>
-				<th class="linhaTabelaDescricao text-primary" >Raça</th>
-				<th class=" linhaTabelaIcon"><a class="btn btn-primary btn-sm " href="/animal/novo" role="button" >Novo</a></th>	
+				<th class="linhaTabelaDescricao text-primary" >Telefone</th>
+				<th class=" linhaTabelaIcon"><a class="btn btn-primary btn-sm " href="/responsavel/novo" role="button" >Novo</a></th>	
 			</tr>
 		</thead>
 			<tbody>
-				<tr th:each="animal : ${animal}">
-				<td class="text-center" th:text="${animal.getId()}"> </td>
-					<td  th:text="${animal.getNome()}"> </td>
-					<td  th:text="${animal.getRaca()}"> </td>
+				<tr th:each="responsavel : ${responsavel}">
+				<td class="text-center" th:text="${responsavel.getId()}"> </td>
+					<td  th:text="${responsavel.getNome()}"> </td>
+					<td  th:text="${responsavel.getTelefone()}"> </td>
 					<td class="linhaTabelaIcon d-flex  ">
-						<a class="btn btn-primary me-2 btn-sm" th:href="@{/animal/{id}/editar (id = ${animal.getId})}" role="button" >Editar</a>
-						<a class="btn btn-outline-primary " th:href="@{/animal/{id} (id = ${animal.id})}"  role="button" > 👁‍🗨</a>
+						<a class="btn btn-primary me-2 btn-sm" th:href="@{/responsavel/{id}/editar (id = ${responsavel.getId})}" role="button" >Editar</a>
+						<a class="btn btn-outline-primary " th:href="@{/responsavel/{id} (id = ${responsavel.id})}"  role="button" > 👁‍🗨</a>
 					</td>
+					
 				</tr>
 			</tbody>
 	</table>

@@ -1,10 +1,8 @@
 package br.com.schusterVet.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import jakarta.persistence.Entity; 
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +18,8 @@ public class Animal {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)	
 	private Long id;
 	
+
+	
 	private String nome;
 	
 	private String tipo;
@@ -28,22 +28,26 @@ public class Animal {
 	
 	private String raca;
 	
-	private Double peso;
+	private String peso;
 	
 	private String altura;
 	
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	
-	@OneToMany(mappedBy = "animal", orphanRemoval = true)
-	@Cascade(CascadeType.ALL)
+	private LocalDate anoAtual = LocalDate.of(2023, 06, 12);
+	
+	private Long idade;
+	
+	private String responsavelAnimal;
+	
+	
+	@OneToMany(mappedBy = "animal")
 	List<Atendimento> atendimentos;
 	
-	@OneToMany(mappedBy = "animal", orphanRemoval = true)
-	@Cascade(CascadeType.ALL)
-	List<Responsavel> responsaveis;
+	@OneToMany(mappedBy = "animal")
+	List<Responsavel> responsavel = new ArrayList<>();
 	
-
-
+	
 
 	public Animal() {
 		
@@ -53,8 +57,8 @@ public class Animal {
 	
 	
 	
-	public Animal(Long id, String nome, String tipo, String cor, String raca, Double peso, String altura,
-			Date dataNascimento, List<Atendimento> atendimentos, List<Responsavel> responsaveis) {
+	public Animal(Long id, String nome, String tipo, String cor, String raca, String peso, String altura,
+			LocalDate dataNascimento, List<Atendimento> atendimentos, List<Responsavel> responsavel, Long idade, String responsavelAnimal) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -65,7 +69,9 @@ public class Animal {
 		this.altura = altura;
 		this.dataNascimento = dataNascimento;
 		this.atendimentos = atendimentos;
-		this.responsaveis = responsaveis;
+		this.responsavel = responsavel;
+		this.idade=idade;
+		this.responsavelAnimal=responsavelAnimal;
 	}
 
 
@@ -81,9 +87,39 @@ public class Animal {
 			animal.setTipo(this.tipo);
 			animal.setAltura(this.altura);
 			animal.setDataNascimento(this.dataNascimento);
-
+			animal.setResponsavelAnimal(responsavelAnimal);
 			return animal;
 		}
+	
+	public Animal toAnimalAtualizar(Animal animal) {
+		
+		
+		animal.setNome(this.nome);
+		animal.setPeso(this.peso);
+		animal.setCor(this.cor);
+		animal.setRaca(this.raca);
+		animal.setTipo(this.tipo);
+		animal.setAltura(this.altura);
+		animal.setDataNascimento(this.dataNascimento);
+		animal.setResponsavelAnimal(responsavelAnimal);
+
+		return animal;
+	}
+	
+	
+	public void fromAnimal(Animal animal) {
+		
+		this.altura=getAltura();
+		this.cor=getCor();
+		this.nome=getNome();
+		this.peso=getPeso();
+		this.raca=getRaca();
+		this.tipo=getTipo();
+		this.dataNascimento=getDataNascimento();
+		this.responsavelAnimal=getResponsavelAnimal();
+		
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -125,11 +161,11 @@ public class Animal {
 		this.raca = raca;
 	}
 
-	public Double getPeso() {
+	public String getPeso() {
 		return peso;
 	}
 
-	public void setPeso(Double peso) {
+	public void setPeso(String peso) {
 		this.peso = peso;
 	}
 
@@ -141,11 +177,11 @@ public class Animal {
 		this.altura = altura;
 	}
 
-	public Date getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -157,12 +193,60 @@ public class Animal {
 		this.atendimentos = atendimentos;
 	}
 
-	public List<Responsavel> getResponsaveis() {
-		return responsaveis;
+
+
+
+	public List<Responsavel> getResponsavel() {
+		return responsavel;
 	}
 
-	public void setResponsaveis(List<Responsavel> responsaveis) {
-		this.responsaveis = responsaveis;
+
+
+
+	public void setResponsavel(List<Responsavel> responsavel) {
+		this.responsavel = responsavel;
+	}
+
+
+
+
+	public Long getIdade() {
+		return idade;
+	}
+
+
+
+
+	public void setIdade(long idade) {
+		this.idade = idade;
+	}
+
+
+
+
+	public LocalDate getAnoAtual() {
+		return anoAtual;
+	}
+
+
+
+
+	public void setAnoAtual(LocalDate anoAtual) {
+		this.anoAtual = anoAtual;
+	}
+
+
+
+
+	public String getResponsavelAnimal() {
+		return responsavelAnimal;
+	}
+
+
+
+
+	public void setResponsavelAnimal(String responsavelAnimal) {
+		this.responsavelAnimal = responsavelAnimal;
 	}
 		
 	

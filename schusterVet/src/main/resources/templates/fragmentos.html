@@ -13,23 +13,25 @@
 <body  >
 
 <div th:fragment="menu">
-<ul class="nav bg-dark nav-tabs">
+<ul class="nav bg-primary nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active bg-dark text-light fw-bold" aria-current="page" href="#">Home</a>
+    <a class="nav-link active bg-primary text-light fw-bold" aria-current="page" href="/home">Home</a>
   </li>
   
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle text-light " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastro</a>
-    <ul class="dropdown-menu bg-dark">
-      <li><a class="dropdown-item bg-dark text-light" href="/animal/lista">Animal</a></li>
-      <li><a class="dropdown-item bg-dark text-light" href="">Usuário</a></li>
+    <ul class="dropdown-menu bg-primary">
+      <li><a class="dropdown-item bg-primary text-light" href="/animal/lista">Animal</a></li>
+      <li><a class="dropdown-item bg-primary text-light" href="/responsavel/lista">Responsável</a></li>
+      <li><a class="dropdown-item bg-primary text-light" href="">Vacina</a></li>
+            <li><a class="dropdown-item bg-primary text-light" href="">Profissional</a></li>
     </ul>
   </li>
 	
 	<li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Lançamento</a>
-    <ul class="dropdown-menu bg-dark">
-      <li><a class="dropdown-item bg-dark text-light" href="/atendimento/lista">Atendimento</a></li>
+    <ul class="dropdown-menu bg-primary">
+      <li><a class="dropdown-item bg-primary text-light" href="/atendimento/lista">Atendimento</a></li>
 
     </ul>
   </li>

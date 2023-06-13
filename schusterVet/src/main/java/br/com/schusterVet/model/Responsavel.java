@@ -32,6 +32,41 @@ public class Responsavel {
 	private Animal animal;
 
 	
+	public Responsavel toResponsavel() {
+		
+		Responsavel responsavel = new Responsavel();
+		responsavel.setNome(this.nome);
+		responsavel.setCpf(this.cpf);
+		responsavel.setTelefone(this.telefone);
+		responsavel.setEmail(this.email);
+
+
+		return responsavel;
+	}
+
+public Responsavel toResponsavelAtualizar(Responsavel responsavel) {
+	
+	
+	responsavel.setNome(this.nome);
+	responsavel.setCpf(this.cpf);
+	responsavel.setTelefone(this.telefone);
+	responsavel.setEmail(this.email);
+
+
+	return responsavel;
+}
+
+
+public void fromResponsavel(Responsavel responsavel) {
+	
+	this.cpf=getCpf();
+	this.email=getCpf();
+	this.nome=getNome();
+	this.telefone=getTelefone();
+
+
+}
+	
 	public Responsavel() {
 		
 		
@@ -47,7 +82,8 @@ public class Responsavel {
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.email = email;
-		this.animal = animal;
+		
+		
 	}
 
 
@@ -103,14 +139,7 @@ public class Responsavel {
 	}
 
 
-	public Animal getAnimal() {
-		return animal;
-	}
 
-
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
-	}
 
 	
 	

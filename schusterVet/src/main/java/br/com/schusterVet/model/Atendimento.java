@@ -31,12 +31,10 @@ public class Atendimento {
 	
 	private String Descricao;
 	
-	@OneToMany(mappedBy = "atendimento", orphanRemoval = true)
-	@Cascade(CascadeType.ALL)
+	@OneToMany(mappedBy = "atendimento")
 	List<Profissional> profissionais;
 	
-	@OneToMany(mappedBy = "atendimento", orphanRemoval = true)
-	@Cascade(CascadeType.ALL)
+	@OneToMany(mappedBy = "atendimento")
 	List<Vacina> vacinas;
 
 	
