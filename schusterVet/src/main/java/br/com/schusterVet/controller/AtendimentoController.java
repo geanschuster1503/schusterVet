@@ -2,6 +2,7 @@ package br.com.schusterVet.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ch.qos.logback.core.model.Model;
@@ -23,4 +24,12 @@ public class AtendimentoController {
 		
 		return "WEB/atendimento/novo";
 	}
+	
+//	@GetMapping("/{id}/excluir")
+//	public String excluir(@PathVariable Long id) {
+//		
+//		this.produtoRepository.deleteById(id);
+//		 return"redirect:/produto/lista";
+//		
+//	}
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.schusterVet.model.Animal;
 import br.com.schusterVet.model.Responsavel;
 import br.com.schusterVet.repository.ResponsavelRepository;
+import br.com.schusterVet.service.ResponsavelService;
 
 
 @Controller
@@ -22,7 +23,7 @@ import br.com.schusterVet.repository.ResponsavelRepository;
 public class ResponsavelController {
 
 	@Autowired
-	private Animal animal;
+	private ResponsavelService responsavelService;
 	
 	@Autowired
 	private ResponsavelRepository responsavelRepository;
@@ -45,7 +46,8 @@ public class ResponsavelController {
 	@PostMapping("/salvar")
 	public String salvar (Model model, Responsavel responsavel) {
 		responsavel = responsavel.toResponsavel();
-		responsavelRepository.save(responsavel);
+			responsavelRepository.save(responsavel);
+
 		return "redirect:/responsavel/lista";
 	}
 	
@@ -95,5 +97,12 @@ public class ResponsavelController {
 		
 	}
 	
+	@GetMapping("/{id}/excluir")
+	public String excluir(@PathVariable Long id) {
+		
+		this.responsavelRepository.deleteById(id);
+		 return"redirect:/responsavel/lista";
+		
+	}
 	
 }

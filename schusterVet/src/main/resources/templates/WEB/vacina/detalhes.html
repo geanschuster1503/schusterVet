@@ -1,0 +1,42 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragmentos :: head}"></head>
+
+<body class="bg-light">
+
+<div th:replace="~{/fragmentos :: menu}"></div>
+	<main class="container mt-4">
+		<h2>
+			Vacina - ID: <span th:text="${vacina.id}"></span>
+		</h2>
+		<table class="table table-bordered border-primary">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Validade</th>
+					<th scope="col">Lote</th>
+		
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row" th:text="${vacina.id}"></th>
+					<td th:text="${vacina.nome}"></td>
+					<td th:text="${vacina.validade}"></td>
+					<td th:text="${vacina.lote}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+			<div class="row">
+				<div class="col-12">
+					<a type="button" th:href="@{/vacina/{vacinaId}/editar (vacinaId= ${vacina.id})}" class="botao btn btn-lg btn-success border ">Editar</a>
+					<a type="button"  href="/vacina/lista" class="botao btn btn-lg btn-light border ">Voltar</a>
+				</div>
+			</div>
+		
+	</main>
+
+</body>
+</html>

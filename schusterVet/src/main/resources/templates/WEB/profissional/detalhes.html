@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragmentos :: head}"></head>
+
+<body class="bg-light">
+
+<div th:replace="~{/fragmentos :: menu}"></div>
+	<main class="container mt-4">
+		<h2>
+			Profissional <span th:text="${profissional.id}"></span>
+		</h2>
+		<table class="table table-bordered border-primary">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Cpf</th>
+					<th scope="col">Função</th>
+					<th scope="col">Ativo</th>
+					
+		
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row" th:text="${responsavel.id}"></th>
+					<td th:text="${profissional.nome}"></td>
+					<td th:text="${profissional.cpf}"></td>
+					<td th:text="${profissional.funcao}"></td>
+					<td th:text="${profissional.ativo}"></td>
+				</tr>
+			</tbody>
+		</table>
+			<div class="row">
+				<div class="col-12">
+					<a type="button" th:href="@{/profissional/{profissionalId}/editar (profissionalId= ${profissional.id})}" class="botao btn btn-lg btn-success border ">Editar</a>
+					<a type="button"  href="/profissional/lista" class="botao btn btn-lg btn-light border ">Voltar</a>
+				</div>
+			</div>
+		
+	</main>
+
+</body>
+</html>

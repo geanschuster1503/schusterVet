@@ -1,5 +1,11 @@
 package br.com.schusterVet.model;
 
+
+import java.time.LocalDate;
+
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,9 +22,41 @@ public class Vacina {
 	
 	private String nome;
 	
+	
+	private String validade;
+	
+	private Long lote;
+	
 	@ManyToOne
 	@JoinColumn(name="vacina_id")
 	private Atendimento atendimento;
+	
+	public Vacina toVacina() {
+		
+		Vacina vacina = new Vacina();
+		
+		vacina.setNome(this.nome);
+		vacina.setLote(this.lote);
+		vacina.setValidade(this.validade);
+		return vacina;
+	}
+	
+	public Vacina toVacinaAtualizar(Vacina vacina) {
+		
+		
+		vacina.setNome(this.nome);
+		vacina.setLote(this.lote);
+		vacina.setValidade(this.validade);
+		return vacina;
+	}
+	
+	public void fromVacina(Vacina vacina) {
+		
+		this.nome=getNome();
+		this.lote=getLote();
+		this.validade=getValidade();
+
+	}
 	
 	public Vacina() {
 		
@@ -27,14 +65,18 @@ public class Vacina {
 	
 	
 
-	public Vacina(Long id, String nome, Atendimento atendimento) {
+	
+
+
+
+	public Vacina(Long id, String nome, String validade, Long lote, Atendimento atendimento) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.validade = validade;
+		this.lote = lote;
 		this.atendimento = atendimento;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -58,6 +100,22 @@ public class Vacina {
 
 	public void setAtendimento(Atendimento atendimento) {
 		this.atendimento = atendimento;
+	}
+
+	public String getValidade() {
+		return validade;
+	}
+
+	public void setValidade(String validade) {
+		this.validade = validade;
+	}
+
+	public Long getLote() {
+		return lote;
+	}
+
+	public void setLote(Long lote) {
+		this.lote = lote;
 	}
 	
 	

@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragmentos :: head}"></head>
+
+<body class="bg-light">
+<div th:replace="~{/fragmentos :: menu}"></div>
+
+<form id="formulario" th:object="${vacina}"  action="/vacina/salvar" method="POST" class=" row ">
+		<h3 class="text-primary" >Editar Vacina</h3>
+
+		<div class="col-md-6 mb-3 mt-5">
+			<label for="inputNome" class="form-label">Nome:</label> 
+			<input type="text" required name="nome" class="form-control" th:field="*{nome}" id="inputNome">
+		</div>
+		<div class="col-md-6 mb-3 mt-5">
+			<label for="inputLote" class="form-label">Lote:</label> 
+			<input type="number" required name="lote" class="form-control" th:field="*{lote}" id="inputLote">
+		</div>
+		<div class="col-md-6 mb-3 ">
+			<label for="inputValidade" class="form-label">Validade:</label> 
+			<input type="date" required name="validade" class="form-control" th:field="*{validade}" id="inputValidade">
+		</div>
+		
+			
+		<div class="col-md-4 caixa-botoes mt-4">
+			<div class=" d-flex gap-2">
+				<button  type="submit" class="botao btn-lg btn-success">Salvar</button>
+				<a type="button" th:href="@{/vacina/{id}/excluir (id = ${vacina.id})}"  class="botao pt-3 btn btn-lg btn-danger border ">Excluir</a>
+				<a type="button" href="/vacina/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
+			</div>
+		</div>
+	</form>
+
+
+
+</body>
+
+<style type="text/css">
+
+
+#formulario {
+	width: 45%;
+	margin: 5% 0 0 20%;
+	background-color: white;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	height: 23rem;
+	padding-bottom: 2rem;
+}
+
+
+
+</style>
+
+</html>

@@ -35,9 +35,7 @@ public class AnimalController {
 	@Autowired
 	private ResponsavelRepository responsavelRepository;
 	
-	@Autowired
-	private Responsavel responsavel;
-	
+
 	@GetMapping("/lista")
 	public String lista(Model model) {
 		List<Animal> animal = this.animalRepository.findAll();
@@ -49,9 +47,7 @@ public class AnimalController {
 	public String novo(Model model) {
 		
 		Animal animal = new Animal();
-		
 		List<Responsavel> list = responsavelRepository.findAll();
-		animal.setResponsavel(list.subList(1, 1));
 		model.addAttribute("list", list);
 		model.addAttribute("animal", animal);
 		return "WEB/animal/novo";
@@ -61,6 +57,7 @@ public class AnimalController {
 	public String salvar (Animal animal) {
 		animal = animal.toAnimal();
 		animal.setIdade(ChronoUnit.YEARS.between(animal.getDataNascimento(), animal.getAnoAtual()));
+		
 		animalRepository.save(animal);
 		return "redirect:/animal/lista";
 	}
@@ -71,7 +68,10 @@ public class AnimalController {
 		 Optional<Animal> optional = this.animalRepository.findById(id);
 		 
 		 if (optional.isPresent()) {
+			List<Responsavel> list = responsavelRepository.findAll();
+			model.addAttribute("list", list);
 			 Animal animal = optional.get();
+			 animal.setIdade(ChronoUnit.YEARS.between(animal.getDataNascimento(), animal.getAnoAtual()));
 			 animal.fromAnimal(animal);
 			model.addAttribute(animal);
 			
@@ -84,8 +84,10 @@ public class AnimalController {
     @GetMapping("/{id}")
     public String detalhes(@PathVariable Long id, Model model) {
         Optional<Animal> optional = this.animalRepository.findById(id);
+        
     	if (optional.isPresent()) {
 			Animal animal = optional.get();
+			animal.setIdade(ChronoUnit.YEARS.between(animal.getDataNascimento(), animal.getAnoAtual()));
 			model.addAttribute(animal);
     		return "WEB/animal/detalhes";
     		
@@ -109,5 +111,12 @@ public class AnimalController {
 		
 	}
 	
+	@GetMapping("/{id}/excluir")
+	public String excluir(@PathVariable Long id) {
+		
+		this.animalRepository.deleteById(id);
+		 return"redirect:/animal/lista";
+		
+	}
 	
 }

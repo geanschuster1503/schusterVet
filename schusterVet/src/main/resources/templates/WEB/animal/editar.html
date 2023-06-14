@@ -7,7 +7,7 @@
 
 
 	<form id="formulario" th:object="${animal}"  th:action="@{/animal/{id}/atualizar (id = ${animal.id})}" method="POST" class=" row g-3">
-	<h3 class="text-primary" >Cadastrar Animal</h3>
+	<h3 class="text-primary" >Editar Animal</h3>
 
 		<div class="col-md-6">
 			<label for="inputNome" class="form-label">Nome</label> 
@@ -38,11 +38,25 @@
 			<label for="inputDataNascimento" class="form-label">Data De Nascimento:</label> 
 			<input type="date" required name="dataNascimento" class="form-control" th:value="${animal.dataNascimento}" id="inputDataNascimento">
 		</div>	
+		
+		<div class="col-md-6">
+			<label for="selectResponsavel" class="form-label">Responsável:</label> 
+			<select name="responsavelAnimal" th:field="*{responsavelAnimal}" id="selectResponsavel" class="form-control">
+				<option value="" selected>--Selecionar--</option>
+				<option th:each="list : ${list}"
+						th:value="${list.nome}"
+						th:text="${list.nome}"
+						th:name="responsavelAnimal"
+						th:field="*{responsavelAnimal}">
+				</option>
+			</select>
+		</div>
+
 			
 		<div class="col-md-4 caixa-botoes ">
 			<div class=" d-flex gap-2">
 				<button  type="submit" class="botao btn-lg btn-success">Atualizar</button>
-				<button type="reset" disabled class="botao btn btn-lg btn-danger">Excluir</button>
+				<a type="button" th:href="@{/animal/{id}/excluir (id = ${animal.id})}"  class="botao pt-3 btn btn-lg btn-danger border ">Excluir</a>
 				<a type="button" href="/animal/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
 			</div>
 		</div>
@@ -60,14 +74,11 @@
 	background-color: white;
 	border-radius: 0.5rem;
 	padding: 1rem;
-	height: 28rem;
+	height: 33rem;
 	padding-bottom: 2rem;
 }
 
-.caixa-botoes{
-margin-top: 3.5%;
-margin-left:3%
-}
+
 
 
 </style>

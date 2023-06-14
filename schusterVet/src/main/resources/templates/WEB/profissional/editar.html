@@ -6,8 +6,8 @@
 <div th:replace="~{/fragmentos :: menu}"></div>
 
 
-	<form id="formulario" th:object="${responsavel}"  th:action="@{/responsavel/{id}/atualizar (id = ${responsavel.id})}" method="POST" class=" row g-3">
-	<h3 class="text-primary" >Editar Responsável</h3>
+	<form id="formulario" th:object="${profissional}"  th:action="@{/profissional/{id}/atualizar (id = ${profissional.id})}" method="POST" class=" row g-3">
+	<h3 class="text-primary" >Editar Profissional</h3>
 
 		<div class="col-md-6">
 			<label for="inputNome" class="form-label">Nome</label> 
@@ -18,7 +18,7 @@
 			<input type="text" required name="cpf" class="form-control" th:field="*{cpf}" id="inputCpf">
 		</div>
 		<div class="col-md-6">
-			<label for="inputTelefone" class="form-label">Telefone</label> 
+			<label for="inputTelefone" class="form-label"></label> 
 			<input type="text" required name="telefone" class="form-control" th:field="*{telefone}" id="inputTelefone">
 		</div>
 		<div class="col-md-6">
@@ -30,8 +30,8 @@
 		<div class="col-md-4 caixa-botoes ">
 			<div class=" d-flex gap-2">
 				<button  type="submit" class="botao btn-lg btn-success">Atualizar</button>
-				<a type="button" th:href="@{/responsavel/{id}/excluir (id = ${responsavel.id})}" class="botao btn btn-lg btn-danger">Excluir</a>
-				<a type="button" href="/responsavel/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
+				<a type="button" th:href="@{/profissional/{id}/excluir (id = ${profissional.id})}" class="botao btn btn-lg btn-danger">Excluir</a>
+				<a type="button" href="/profissional/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
 			</div>
 		</div>
 	</form>

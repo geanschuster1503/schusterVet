@@ -87,7 +87,7 @@ public class Animal {
 			animal.setTipo(this.tipo);
 			animal.setAltura(this.altura);
 			animal.setDataNascimento(this.dataNascimento);
-			animal.setResponsavelAnimal(responsavelAnimal);
+			animal.setResponsavelAnimal(this.responsavelAnimal);
 			return animal;
 		}
 	
@@ -101,7 +101,7 @@ public class Animal {
 		animal.setTipo(this.tipo);
 		animal.setAltura(this.altura);
 		animal.setDataNascimento(this.dataNascimento);
-		animal.setResponsavelAnimal(responsavelAnimal);
+		animal.setResponsavelAnimal(this.responsavelAnimal);
 
 		return animal;
 	}
