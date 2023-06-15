@@ -64,7 +64,7 @@
 		
 			<div class=" d-flex gap-2 mt-3">
 				<button  type="submit" class="botao btn-lg btn-success">Salvar</button>
-				<button type="reset" disabled class="botao btn btn-lg btn-danger">Excluir</button>
+			<a type="button" th:href="@{/atendimento/{id}/excluir (id = ${atendimento.id})}"  class="botao btn btn-lg btn-danger border ">Excluir</a>
 				<a type="button" href="/atendimento/lista" class="botao  btn btn-lg btn-light border ">Voltar</a>
 			</div>
 		</div>

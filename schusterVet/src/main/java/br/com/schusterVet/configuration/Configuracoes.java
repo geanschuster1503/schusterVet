@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.schusterVet.model.Animal;
+import br.com.schusterVet.model.Atendimento;
 import br.com.schusterVet.model.Responsavel;
 import br.com.schusterVet.model.Vacina;
 
@@ -27,5 +28,11 @@ public class Configuracoes {
 	public Vacina vacina() {
 		
 		return new Vacina();
+	}
+	
+	@Bean
+	public Atendimento atendimento() {
+		
+		return new Atendimento();
 	}
 }

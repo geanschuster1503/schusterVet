@@ -17,13 +17,18 @@
 			<input type="number" required name="cpf" class="form-control" th:field="*{cpf}" id="inputCpf">
 		</div>
 		<div class="col-md-6">
-			<label for="inputTelefone" class="form-label">Telefone</label> 
-			<input type="tel" required name="telefone" class="form-control" th:field="*{telefone}" id="inputTelefone">
+			<label for="inputFuncao" class="form-label">Função:</label> 
+			<input type="text" required name="funcao" class="form-control" th:field="*{funcao}" id="inputFuncao">
 		</div>
-		<div class="col-md-6">
-			<label for="inputEmail" class="form-label">E-mail</label> 
-			<input type="email" required name="email" class="form-control" th:field="*{email}" id="inputEmail">
-		</div>
+		
+	<div class="col-md-6">
+		<label for="selectAtivo" class="form-label">Ativo:</label> 
+		<select name="ativo" th:field="*{ativo}" id="selectAtivo" class="form-control">
+				<option value="Sim" >Sim </option>
+				<option value="Não">Não </option>
+			
+		</select>
+	</div>	
 
 					
 			
@@ -31,7 +36,7 @@
 			<div class=" d-flex gap-2">
 				<button  type="submit" class="botao btn-lg btn-success">Salvar</button>
 				<button type="reset" disabled class="botao btn btn-lg btn-danger">Excluir</button>
-				<a type="button" href="/profissional/lista" class="botao pt-3 btn btn-lg btn-light border ">Voltar</a>
+				<a type="button" href="/profissional/lista" class="botao  btn btn-lg btn-light border ">Voltar</a>
 			</div>
 		</div>
 	</form>

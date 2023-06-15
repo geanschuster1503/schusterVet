@@ -1,0 +1,42 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragmentos :: head}"></head>
+
+<body class="bg-light">
+
+<div th:replace="~{/fragmentos :: menu}"></div>
+	<main class="container mt-4">
+		<h2>
+			Atendimento <span th:text="${atendimento.id}"></span>
+		</h2>
+		<table class="table table-bordered border-primary">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Animal</th>
+					<th scope="col">Profissional</th>
+					<th scope="col">Vacina</th>
+					<th scope="col">Data e Hora</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row" th:text="${atendimento.id}"></th>
+					<td th:text="${atendimento.animalAtendimento}"></td>
+					<td th:text="${atendimento.profissional}"></td>
+					<td th:text="${atendimento.vacina}"></td>
+					<td th:text="${atendimento.dataHora}"></td>
+				</tr>
+			</tbody>
+		</table>
+			<div class="row">
+				<div class="col-12">
+					<a type="button" th:href="@{/atendimento/{atendimentoId}/editar (atendimentoId = ${atendimento.id})}" class="botao btn btn-lg btn-success border ">Editar</a>
+					<a type="button"  href="/atendimento/lista" class="botao btn btn-lg btn-light border ">Voltar</a>
+				</div>
+			</div>
+		
+	</main>
+
+</body>
+</html>

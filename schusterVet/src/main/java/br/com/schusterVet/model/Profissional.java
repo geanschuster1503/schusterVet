@@ -23,7 +23,9 @@ public class Profissional {
 	
 	private String funcao;
 	
-	private Boolean ativo;
+	private String ativo;
+	
+	
 
 	@ManyToOne
 	@JoinColumn(name="atendimento_id")
@@ -43,7 +45,7 @@ public class Profissional {
 		profissional.setCpf(this.cpf);
 		profissional.setFuncao(this.funcao);
 		profissional.setAtivo(this.ativo);
-
+		
 
 		return profissional;
 	}
@@ -55,7 +57,7 @@ public Profissional toProfissionalAtualizar(Profissional profissional) {
 	profissional.setCpf(this.cpf);
 	profissional.setFuncao(this.funcao);
 	profissional.setAtivo(this.ativo);
-
+	
 
 	return profissional;
 }
@@ -67,7 +69,7 @@ public void fromProfissional(Profissional profissional) {
 	this.ativo=getAtivo();
 	this.nome=getNome();
 	this.funcao=getFuncao();
-
+	
 
 }
 
@@ -112,12 +114,12 @@ public void setFuncao(String funcao) {
 }
 
 
-public Boolean getAtivo() {
+public String getAtivo() {
 	return ativo;
 }
 
 
-public void setAtivo(Boolean ativo) {
+public void setAtivo(String ativo) {
 	this.ativo = ativo;
 }
 
@@ -130,6 +132,10 @@ public Atendimento getAtendimento() {
 public void setAtendimento(Atendimento atendimento) {
 	this.atendimento = atendimento;
 }
+
+
+
+
 
 	
 }

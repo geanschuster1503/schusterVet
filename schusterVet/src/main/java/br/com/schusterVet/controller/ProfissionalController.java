@@ -45,8 +45,7 @@ public class ProfissionalController {
 	public String salvar (Model model, Profissional profissional) {
 		profissional = profissional.toProfissional();
 		profissionalRepository.save(profissional);
-
-		return "redirect:/responsavel/lista";
+		return "redirect:/profissional/lista";
 	}
 	
 
@@ -55,12 +54,10 @@ public class ProfissionalController {
 	public String editar(@PathVariable Long id,Model model) {
 	
 		 Optional<Profissional> optional = this.profissionalRepository.findById(id);
-		 
 		 if (optional.isPresent()) {
 			 Profissional profissional = optional.get();
 			 profissional.fromProfissional(profissional);
 			model.addAttribute(profissional);
-			
 	    		return "WEB/profissional/editar";
 			}else {
 				return"redirect:/profissional/lista";	
@@ -84,9 +81,7 @@ public class ProfissionalController {
 	public String atualizar(@PathVariable Long id,Profissional profissional) {
 		Optional<Profissional> optional = this.profissionalRepository.findById(id);
 		if(optional.isPresent()) {
-			
 			profissional.toProfissionalAtualizar(optional.get());
-			
 			this.profissionalRepository.save(profissional);
 		
 		}

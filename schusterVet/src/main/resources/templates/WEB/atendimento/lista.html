@@ -6,17 +6,63 @@
 
 <div th:replace="~{/fragmentos :: menu}"></div>
 
-
-
-
+<div class="table-responsive">
+	<h3 class="tituloProduto text-primary">Atendimentos cadastrados</h3>
+	<table class="table table-bordered   bg-light w-50 "> 
+		<thead>
+			<tr>
+				<th class="linhaTabelaId text-primary text-center" >Id</th>
+				<th class="linhaTabelaNome text-primary" >Animal</th>
+				<th class="linhaTabelaNome text-primary" >Descrição</th>
+				<th class=" linhaTabelaIcon"><a class="btn btn-primary btn-sm " href="/atendimento/novo" role="button" >Novo</a></th>	
+			</tr>
+		</thead>
+			<tbody>
+				<tr th:each="atendimento : ${atendimento}">
+				<td class="text-center" th:text="${atendimento.getId()}"> </td>
+					<td  th:text="${atendimento.animalAtendimento}"> </td>
+					<td  th:text="${atendimento.getDescricao()}"> </td>
+					<td class="linhaTabelaIcon d-flex  ">
+						<a class="btn btn-primary me-2 btn-sm" th:href="@{/atendimento/{id}/editar (id = ${atendimento.getId})}" role="button" >Editar</a>
+						<a class="btn btn-outline-primary " th:href="@{/atendimento/{id} (id = ${atendimento.id})}"  role="button" > 👁‍🗨</a>
+					</td>
+					
+				</tr>
+			</tbody>
+	</table>
+</div>
 </body>
 
 
 <style type="text/css">
 
+
+.linhaTabelaId{
+width:5rem;
+}
+
+.linhaTabelaIcon{
+
+text-align: center;
+width: 8rem;
+
+}
+
 .table{
 
-margin:10% 0% 0% 25%;
+margin:0% 0% 0% 25%;
+}
+
+
+
+.tituloProduto{
+font-size:30px;
+font-family:sans-serif;
+text-decoration:none;
+font-weight: 800;
+margin:5% 0 0 25%;
+
+
 }
 
 </style>
